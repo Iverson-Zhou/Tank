@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.think.tank.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black">
+
+        <com.example.think.tank.view.FightingView
+            android:id="@+id/v_fighting"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <com.example.think.tank.view.SteeringWheelView
+            android:id="@+id/v_steeringwheel"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/transparent"/>
+
+        <com.example.think.tank.view.FireButton
+            android:id="@+id/btn_fire"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="150dp"
+            android:layout_marginRight="100dp"
+            android:background="@drawable/bg_selector"/>
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
