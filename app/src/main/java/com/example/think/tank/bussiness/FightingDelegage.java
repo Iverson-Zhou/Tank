@@ -103,7 +103,7 @@ public class FightingDelegage implements ITankHitHandler, IMissileHitHandler,
 
         mIsRunning = true;
         executorService.submit(new BufferDrawer());
-//        executorService.submit(new MissileDriver());
+        executorService.submit(new MissileDriver());
         executorService.submit(new TankDriver());
     }
 
@@ -194,34 +194,6 @@ public class FightingDelegage implements ITankHitHandler, IMissileHitHandler,
                     explodes.clear();
                     //绘制结束
 
-
-                    //控制敌方坦克移动, 子弹移动,碰撞检测
-                    for (int i = 0; i < enemyTanks.size(); i++) {
-                        enemyTanks.get(i).fireAtWill();
-                        enemyTanks.get(i).moveAtWill(enemyTanks, oursTank, walls);
-                    }
-
-                    for (int i = 0; i < enemyMissiles.size(); i++) {
-                        enemyMissiles.get(i).move();
-                    }
-                    for (int i = 0; i < oursMissiles.size(); i++) {
-                        oursMissiles.get(i).move();
-                    }
-
-                    //已检查是否出界, 还需要加入是否打到我方坦克和打到墙
-                    for (int i = 0; i < enemyMissiles.size(); i++) {
-                        if (!enemyMissiles.get(i).isOut()) {
-                            enemyMissiles.get(i).hitTank(oursTank);
-                        }
-                    }
-
-                    for (int i = 0; i < oursMissiles.size(); i++) {
-                        if (!oursMissiles.get(i).isOut()) {
-                            oursMissiles.get(i).hitTanks(enemyTanks);
-                        }
-                    }
-                    //控制敌方坦克移动, 子弹移动,碰撞检测
-
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }finally {
@@ -249,6 +221,7 @@ public class FightingDelegage implements ITankHitHandler, IMissileHitHandler,
                 try {
                     mMutex.acquire(Thread.currentThread());
 
+                    //控制敌方坦克移动, 子弹移动,碰撞检测
                     for (int i = 0; i < enemyTanks.size(); i++) {
                         enemyTanks.get(i).fireAtWill();
                         enemyTanks.get(i).moveAtWill(enemyTanks, oursTank, walls);
@@ -273,6 +246,7 @@ public class FightingDelegage implements ITankHitHandler, IMissileHitHandler,
                             oursMissiles.get(i).hitTanks(enemyTanks);
                         }
                     }
+                    //控制敌方坦克移动, 子弹移动,碰撞检测
 
 
                 } catch (InterruptedException e) {
