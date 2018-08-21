@@ -168,15 +168,6 @@ public class FightingDelegage implements ITankHitHandler, IMissileHitHandler,
                     clearCanvas(mBufferCanvas);
 
                     //绘制开始
-                    //子弹
-                    for (int i = 0; i < enemyMissiles.size(); i++) {
-                        enemyMissiles.get(i).draw(mBufferCanvas);
-                    }
-
-                    //我方子弹
-                    for (int i = 0; i < oursMissiles.size(); i++) {
-                        oursMissiles.get(i).draw(mBufferCanvas);
-                    }
 
                     //敌方坦克
                     for (int i = 0; i < enemyTanks.size(); i++) {
@@ -185,6 +176,16 @@ public class FightingDelegage implements ITankHitHandler, IMissileHitHandler,
 
                     //我方坦克
                     oursTank.draw(mBufferCanvas);
+
+                    //我方子弹
+                    for (int i = 0; i < oursMissiles.size(); i++) {
+                        oursMissiles.get(i).draw(mBufferCanvas);
+                    }
+
+                    //子弹
+                    for (int i = 0; i < enemyMissiles.size(); i++) {
+                        enemyMissiles.get(i).draw(mBufferCanvas);
+                    }
 
                     //爆炸效果
                     for (int i = 0; i < explodes.size(); i++) {
